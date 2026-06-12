@@ -1,16 +1,45 @@
 #include <raylib.h>
 
-int main() {
-    InitWindow(800, 600, "CHIP-8 Emulator");
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
 
-    while (!WindowShouldClose()) {
+int main()
+{
+    InitWindow(640, 320, "CHIP-8 Emulator");
+    SetTargetFPS(60);
+    SetWindowState(FLAG_WINDOW_RESIZABLE);
+    int scale = MIN(GetScreenWidth() / 64, GetScreenHeight() / 32);
+    int offsetX = (GetScreenWidth() - 64 * scale) / 2;
+    int offsetY = (GetScreenHeight() - 32 * scale) / 2;
+    bool tela[32][64] = {0};
+
+    while (!WindowShouldClose())
+    {
+        if (IsWindowResized)
+        {
+            int scale = MIN(GetScreenWidth() / 64, GetScreenHeight() / 32);
+            int offsetX = (GetScreenWidth() - 64 * scale) / 2;
+            int offsetY = (GetScreenHeight() - 32 * scale) / 2;
+        }
+        for (int y = 0; y < 32; y++)
+        {
+            for (int x = 0; x < 64; x++)
+            {
+                tela[y][x] = GetRandomValue(0, 1);
+            }
+        }
+
         BeginDrawing();
-
-        DrawRectangle(0, 0, 800, 600, (Color){0, 156, 59, 255});
-
-        DrawPoly((Vector2){400, 300}, 4, 230, 45, (Color){255, 217, 0, 255});
-
-        DrawCircle(400, 300, 130, (Color){0, 39, 118, 255});
+        ClearBackground(BLACK);
+        for (int y = 0; y < 32; y++)
+        {
+            for (int x = 0; x < 64; x++)
+            {
+                if (tela[y][x])
+                {
+                    DrawRectangle(offsetX + x * scale, offsetY + y * scale, scale, scale, RAYWHITE);
+                }
+            }
+        }
 
         EndDrawing();
     }
