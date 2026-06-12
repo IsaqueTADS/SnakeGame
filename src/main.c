@@ -24,10 +24,25 @@ int main()
 
         BeginDrawing();
         ClearBackground(BLACK);
+        if (IsKeyDown(KEY_W) && y > 0)
+        {
+            tela[y][x] = false;
+            y--;
+        }
         if (IsKeyDown(KEY_S) && y < 31)
         {
             tela[y][x] = false;
             y++;
+        }
+        if (IsKeyDown(KEY_A) && x > 0)
+        {
+            tela[y][x] = false;
+            x--;
+        }
+        if (IsKeyDown(KEY_D) && x < 63)
+        {
+            tela[y][x] = false;
+            x++;
         }
 
         tela[y][x] = true;
