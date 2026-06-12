@@ -11,6 +11,7 @@ int main()
     int offsetX = (GetScreenWidth() - 64 * scale) / 2;
     int offsetY = (GetScreenHeight() - 32 * scale) / 2;
     bool tela[32][64] = {0};
+    int x = 32, y = 16;
 
     while (!WindowShouldClose())
     {
@@ -20,23 +21,24 @@ int main()
             int offsetX = (GetScreenWidth() - 64 * scale) / 2;
             int offsetY = (GetScreenHeight() - 32 * scale) / 2;
         }
-        for (int y = 0; y < 32; y++)
-        {
-            for (int x = 0; x < 64; x++)
-            {
-                tela[y][x] = GetRandomValue(0, 1);
-            }
-        }
 
         BeginDrawing();
         ClearBackground(BLACK);
+        if (IsKeyDown(KEY_S) && y < 31)
+        {
+            tela[y][x] = false;
+            y++;
+        }
+
+        tela[y][x] = true;
+
         for (int y = 0; y < 32; y++)
         {
             for (int x = 0; x < 64; x++)
             {
                 if (tela[y][x])
                 {
-                    DrawRectangle(offsetX + x * scale, offsetY + y * scale, scale, scale, RAYWHITE);
+                    DrawRectangle(offsetX + x * scale, offsetY + y * scale, scale, 2 * scale, RAYWHITE);
                 }
             }
         }
