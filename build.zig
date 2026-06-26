@@ -45,6 +45,7 @@ pub fn build(b: *std.Build) void {
             "vendor/raylib/src/external/glfw/src/xkb_unicode.c",
             "vendor/raylib/src/external/glfw/src/egl_context.c",
             "vendor/raylib/src/external/glfw/src/osmesa_context.c",
+            "vendor/raylib/src/raudio.c",
         },
         .windows => &.{
             "vendor/raylib/src/external/glfw/src/context.c",
