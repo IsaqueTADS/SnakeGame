@@ -20,12 +20,16 @@ int main(void)
         if (state == MENU_MAIN)
         {
             UpdateMainMenu();
+            BeginDrawing();
             DrawMainMenu();
+            EndDrawing();
         }
         else if (state == MENU_DIFFICULTY)
         {
             UpdateDifficultyMenu();
+            BeginDrawing();
             DrawDifficultyMenu();
+            EndDrawing();
         }
         else if (state == PLAYING || state == GAME_OVER)
         {
