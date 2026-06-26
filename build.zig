@@ -18,6 +18,10 @@ pub fn build(b: *std.Build) void {
 
     const raylib_sources = &.{
         "src/main.c",
+        "src/menu.c",
+        "src/snake.c",
+        "src/heart.c",
+        "src/audio.c",
         "vendor/raylib/src/rcore.c",
         "vendor/raylib/src/rshapes.c",
         "vendor/raylib/src/rtextures.c",
