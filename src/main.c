@@ -35,7 +35,7 @@ int main()
     InitAudioDevice();
     SetAudioStreamBufferSizeDefault(4096);
     AudioStream stream = LoadAudioStream(44100, 32, 1);
-    SetaudioStreamCallback(stream, AudioInputCallback);
+    SetAudioStreamCallback(stream, AudioInputCallback);
     PlayAudioStream(stream);
 
     SetTargetFPS(60);
@@ -48,7 +48,7 @@ int main()
 
     while (!WindowShouldClose())
     {
-        if (IsWindowResized)
+        if (IsWindowResized())
         {
             int scale = MIN(GetScreenWidth() / 64, GetScreenHeight() / 32);
             int offsetX = (GetScreenWidth() - 64 * scale) / 2;
@@ -83,11 +83,9 @@ int main()
         if (IsKeyDown(KEY_DOWN))
             frequency -= 2.0f;
 
-        BeginDrawing();
         DrawText("Gerador de onda quadrada", 180, 150, 20, RAYWHITE);
         DrawText(TextFormat("Frequência: %.2f Hz", frequency), 240, 200, 20, RAYWHITE);
         DrawText("Use as setas para cima e para baixo para ajustar a frequência", 120, 350, 20, RAYWHITE);
-        EndDrawing();
 
         tela[y][x] = true;
 
