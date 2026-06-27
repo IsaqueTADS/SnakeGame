@@ -2,6 +2,7 @@
 #include "audio.h"
 #include "heart.h"
 #include "snake.h"
+#include "music.h"
 
 #define MAX_DIFF 4
 
@@ -74,6 +75,7 @@ void UpdateDifficultyMenu(void)
         {
             selectedDiff = i;
             InitSnakeGame(diffInterval[i], diffLives[i]);
+            PlayBgMusic(i);
             state = PLAYING;
         }
     }

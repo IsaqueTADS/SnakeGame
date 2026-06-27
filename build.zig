@@ -22,6 +22,7 @@ pub fn build(b: *std.Build) void {
         "src/snake.c",
         "src/heart.c",
         "src/audio.c",
+        "src/music.c",
         "vendor/raylib/src/rcore.c",
         "vendor/raylib/src/rshapes.c",
         "vendor/raylib/src/rtextures.c",

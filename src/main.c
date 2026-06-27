@@ -5,6 +5,7 @@
 #include "menu.h"
 #include "snake.h"
 #include "audio.h"
+#include "music.h"
 
 int main(void)
 {
@@ -13,10 +14,13 @@ int main(void)
     InitWindow(800, 600, "Snake Game");
     InitAudioDevice();
     InitSounds();
+    InitBgMusic();
     SetTargetFPS(60);
 
     while (!WindowShouldClose())
     {
+        UpdateBgMusic();
+
         if (state == MENU_MAIN)
         {
             UpdateMainMenu();
@@ -45,6 +49,7 @@ int main(void)
             {
                 if (GetSnakeScore() > highScore)
                     highScore = GetSnakeScore();
+                StopBgMusic();
                 state = MENU_MAIN;
             }
         }
